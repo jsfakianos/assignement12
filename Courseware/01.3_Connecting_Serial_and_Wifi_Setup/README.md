@@ -16,10 +16,11 @@ Your SD Card will go into the SD slot in the BACK of the Pi. Make sure to insert
 <br/>**BE VERY, VERY CAREFUL WITH THE MICRO-USB CONNECTION - IT HAS MINIMAL STRAIN RELIEF AND CAN BE PULLED OFF THE BOARD IF YOU ARE CARELESS**
 8.  Plug the power cord into an AC outlet, then plug the power adapter into the LAMPI.  The Pi should have a steady red light on.
 9.  Plug the USB part of the Serial Cable into your USB port of your computer.
-10. Install any necessary software or drivers specific to you OS as documented in [using a console cable](https://learn.adafruit.com/downloads/pdf/adafruits-raspberry-pi-lesson-5-using-a-console-cable.pdf)
-11. Then in your terminal emulator, connect to your Pi. 
-![Connected Pi Serial Terminal] (Images/Connect_Pi_Serial_Terminal.png)
-![Terminal Settings] (Images/Terminal_Settings.png)
+10. The LAMPI Interface Board has an FTDI Serial-USB chip (an FTDI FT230X) to simplify connecting your computer to the serial port on the Raspberry Pi. Install any needed Virtual COM Port Drivers for the FTDI USB-Serial chip [FTDI VPC Drivers](http://www.ftdichip.com/Drivers/VCP.htm) needed for your OS.
+10. Install any necessary terminal emulator software needed for your OS (see [Serial Terminal Basics](https://learn.sparkfun.com/tutorials/terminal-basics/all) which has helpful basic information as well as links to several popular terminal emulator applications for various Operating Systems; note: the baud rate and other settiings in that link are focused on connecting to Arduino devices, which are slower and have a much lower baud rate - use the settings below for the Raspberry Pi).
+11. Then in your terminal emulator, connect to your Pi.  The following images are from the [Serial app for OSX](https://www.decisivetactics.com/products/serial/), a non-free application.
+![Connected Pi Serial Terminal](Images/Connect_Pi_Serial_Terminal.png)
+![Terminal Settings](Images/Terminal_Settings.png)
 The Line Settings within Terminal Settings should be:
 	* Baud Rate: 115200
 	* Data Bits: 8
@@ -27,7 +28,7 @@ The Line Settings within Terminal Settings should be:
 	* Stop: 1
 12. Log into your Raspberry Pi:
 	* login: ``pi``
-	* password: `r`aspberry``
+	* password: ``raspberry``
 13. Run `sudo raspi-config` to perform initial setup.
 14. Highlight `1 Expand Filesystem` and press enter. Follow the prompts.
 15. Highlight `2 Change User Password` and choose a new password.

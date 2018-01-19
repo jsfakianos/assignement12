@@ -29,6 +29,7 @@ Before the start of class next week, one member of each pair should send an emai
 * Subject:  Assignment 1
 * Names of the members of pair
 * A short (a few sentences) write up from each member of the pair summarizing what they learned completing the assignment, and one thing that surprised them (good, bad, or just surprising).
+* How many hours total you and your partner spent on this week's assignment, rounded to the nearest hour.
 * Attach the file containing the required Python script
 * Attach a short (5-10 second) video demonstrating the required lamp behaviors.
 
