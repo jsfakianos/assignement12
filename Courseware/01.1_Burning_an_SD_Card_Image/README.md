@@ -56,4 +56,4 @@ Now eject the disk. You are now ready to create a serial connection.
 
 Next up: go to [Assembling LAMPI](../01.2_Assemble_LAMPI/README.md)
 
-&copy; 2015-17 LeanDog, Inc. and Nick Barendt
+&copy; 2015-18 LeanDog, Inc. and Nick Barendt

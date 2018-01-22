@@ -52,4 +52,4 @@ Other documentation:
 
 Next up: go to [3D Printing LAMPI](../01.6_3D_Printing/README.md)
 
-&copy; 2015-17 LeanDog, Inc. and Nick Barendt
+&copy; 2015-18 LeanDog, Inc. and Nick Barendt

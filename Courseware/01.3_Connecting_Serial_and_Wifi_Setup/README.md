@@ -167,4 +167,4 @@ t
 
 Next up: go to [Interface LED](../01.4_Interface_LED/README.md)
 
-&copy; 2015-17 LeanDog, Inc. and Nick Barendt
+&copy; 2015-18 LeanDog, Inc. and Nick Barendt

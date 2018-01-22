@@ -34,4 +34,4 @@ We will be using PWM to control each color channel of our LEDs.  By varying the 
 
 Next up: go to [Control LED via Python](../01.5_Control_LED_via_Python_Script/README.md)
 
-&copy; 2015-17 LeanDog, Inc. and Nick Barendt
+&copy; 2015-18 LeanDog, Inc. and Nick Barendt

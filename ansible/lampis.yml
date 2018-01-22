@@ -1,0 +1,4 @@
+# our LAMPi specific playbooks (there will be others, non-device playbooks, later)
+- hosts: lampis
+  roles:
+    - lampi

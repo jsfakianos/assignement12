@@ -20,5 +20,6 @@ Any/all of these compatibility notes should be considered temporary - a future v
 # [Chapter 1: Build a Raspberry Pi Controlled Desk Lamp](Courseware/01.md)
 
 
+# [Chapter 2: Native Embedded App](Courseware/02.md)
 
-&copy; 2015-17 LeanDog, Inc. and Nick Barendt
+&copy; 2015-18 LeanDog, Inc. and Nick Barendt

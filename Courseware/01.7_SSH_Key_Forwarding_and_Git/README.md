@@ -151,4 +151,4 @@ $ sudo apt-get install git
 
 Next up: go to [Assignment 1](../01.8_Assignment/README.md)
 
-&copy; 2015-17 LeanDog, Inc. and Nick Barendt
+&copy; 2015-18 LeanDog, Inc. and Nick Barendt

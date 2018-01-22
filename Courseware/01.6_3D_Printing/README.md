@@ -78,4 +78,4 @@ There are 3 files, ready to be imported into the MakerBot software:
 
 Next up: go to [SSH Key Forwarding and Git](../01.7_SSH_Key_Forwarding_and_Git/README.md)
 
-&copy; 2015-17 LeanDog, Inc. and Nick Barendt
+&copy; 2015-18 LeanDog, Inc. and Nick Barendt

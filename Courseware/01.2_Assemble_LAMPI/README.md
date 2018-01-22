@@ -260,4 +260,4 @@ Align the front and rear panels and slide together to complete the assembly of y
 
 Next up: go to [Connecting Serial and WiFi Setup](../01.3_Connecting_Serial_and_Wifi_Setup/README.md)
 
-&copy; 2015-17 LeanDog, Inc. and Nick Barendt
+&copy; 2015-18 LeanDog, Inc. and Nick Barendt
