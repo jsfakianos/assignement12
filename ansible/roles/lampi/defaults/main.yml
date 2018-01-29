@@ -16,7 +16,7 @@ pi_user_kivy_config: /home/pi/.kivy/config.ini
 kivy_config_dict_input:
     "%(name)s": "probesysfs,provider=mtdev,param=max_position_x=240,param=max_position_y=320"
 boot_config: /boot/config.txt
-connected_devices_git_repo_url: "git@github.com:CWRU-Connected-Devices/connected-devices-spring17.git"
+connected_devices_git_repo_url: "git@github.com:CWRU-Connected-Devices/connected-devices-spring18.git"
 connected_devices_git_repo_version: master
 repo_directory: "/home/pi/connected-devices"
 lampi_app_cron_file: "3_lampiapp_ansible"
