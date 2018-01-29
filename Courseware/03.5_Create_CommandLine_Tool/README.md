@@ -87,7 +87,7 @@ Conveniently, this is nearly identical to the JSON representation:
 ## Assignment Part 1
 Create a Unix Command-line tool, named ```lamp_cmd``` that has the following behaviors:
 * when invoked with no arguments, outputs the current state of the desk lamp (color Hue and Saturation, Brightness, and On/Off state)
-* when invoved with command-line arguments below, publishes an appropriate change request message
+* when invoked with command-line arguments below, publishes an appropriate change request message
 
 Command-line arguments to be supported:
 * "--brightness" or "-b" and a value
