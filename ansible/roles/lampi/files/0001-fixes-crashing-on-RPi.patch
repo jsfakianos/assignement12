@@ -1,0 +1,34 @@
+From 72d0e0a739ff54409a337f5d9e03d177b2b1d5d5 Mon Sep 17 00:00:00 2001
+From: darkopevec <darko.pevec@gmail.com>
+Date: Thu, 29 Sep 2016 11:27:54 +0200
+Subject: [PATCH] fixes crashing on RPi
+
+quite often, x and y are not in args
+---
+ kivy/input/providers/mtdev.py | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/kivy/input/providers/mtdev.py b/kivy/input/providers/mtdev.py
+index 935ab74..65ff756 100644
+--- a/kivy/input/providers/mtdev.py
++++ b/kivy/input/providers/mtdev.py
+@@ -47,8 +47,14 @@ class MTDMotionEvent(MotionEvent):
+ 
+     def depack(self, args):
+         self.is_touch = True
+-        self.sx = args['x']
+-        self.sy = args['y']
++        if 'x' in args:
++            self.sx = args['x']
++        else:
++            self.sx = -1
++        if 'y' in args:
++            self.sy = args['y']
++        else:
++            self.sy = -1
+         self.profile = ['pos']
+         if 'size_w' in args and 'size_h' in args:
+             self.shape = ShapeRect()
+-- 
+2.10.1 (Apple Git-78)
+

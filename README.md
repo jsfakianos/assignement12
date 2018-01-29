@@ -22,4 +22,6 @@ Any/all of these compatibility notes should be considered temporary - a future v
 
 # [Chapter 2: Native Embedded App](Courseware/02.md)
 
+# [Chapter 3:  Pub/Sub](Courseware/03.md)
+
 &copy; 2015-18 LeanDog, Inc. and Nick Barendt
