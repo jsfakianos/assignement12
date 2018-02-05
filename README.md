@@ -24,4 +24,6 @@ Any/all of these compatibility notes should be considered temporary - a future v
 
 # [Chapter 3:  Pub/Sub](Courseware/03.md)
 
+# [Chapter 4: To the Cloud!](Courseware/04.md)
+
 &copy; 2015-18 LeanDog, Inc. and Nick Barendt

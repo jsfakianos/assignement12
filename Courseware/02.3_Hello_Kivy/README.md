@@ -17,7 +17,7 @@ and this to install the latest version of `pip`:
 
 ```bash
 sudo wget https://bootstrap.pypa.io/get-pip.py
-chmod +x get-pip.py
+sudo chmod +x get-pip.py
 sudo ./get-pip.py
 ```
 
