@@ -1,0 +1,15 @@
+# update apt cache at beginning of beginning of Ansible tasks
+#  later apt tasks can use cache_valid_time to avoid unnecessary updates
+
+- name: update apt cache
+  become: True
+  apt:
+    update_cache: yes
+
+# using workaround https://github.com/ansible/ansible-modules-core/issues/1741
+- name: upgrade everything
+  become: True
+  command: apt-get upgrade -y -qq
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+

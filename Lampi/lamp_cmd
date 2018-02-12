@@ -10,12 +10,13 @@ from paho.mqtt.client import Client
 
 from lamp_common import *
 
+MQTT_CLIENT_ID = 'lamp_cmd'
 
 class LampiCmd(object):
 
     def __init__(self):
         self.received_lamp_state = None
-        self.client = Client()
+        self.client = Client(client_id=MQTT_CLIENT_ID)
         self.client.on_connect = self.on_connect
         self.client.connect(MQTT_BROKER_HOST,
                             port=MQTT_BROKER_PORT,
@@ -77,6 +78,8 @@ class LampiCmd(object):
             self.received_lamp_state['on'] = True
         if args.off is not None:
             self.received_lamp_state['on'] = False
+
+        self.received_lamp_state['client'] = MQTT_CLIENT_ID
 
         self.client.publish(TOPIC_SET_LAMP_CONFIG,
                             json.dumps(self.received_lamp_state))

@@ -1,0 +1,29 @@
+- name: install mosquitto PPA
+  become: True
+  apt_repository:
+    repo: ppa:mosquitto-dev/mosquitto-ppa
+    update_cache: yes
+
+- name: install mosquitto and client tools
+  become: True
+  apt:
+    name: "{{ item }}"
+    cache_valid_time: "{{ cache_update_valid_secs }}"
+  with_items:
+    - mosquitto={{ mosquitto_ubuntu_version }}
+    - mosquitto-clients
+
+- name: change MQTT port
+  become: True
+  lineinfile:
+    create: True
+    insertafter: EOF
+    dest: /etc/mosquitto/conf.d/port.conf
+    line: 'listener 50001'
+
+- name: restart mosquitto
+  become: True
+  service:
+    name: mosquitto
+    state: restarted 
+
