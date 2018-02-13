@@ -84,7 +84,7 @@ class LampiApp(App):
     def on_connect(self, client, userdata, flags, rc):
         self.mqtt.publish(client_state_topic(MQTT_CLIENT_ID), "1",
                           qos=2, retain=True)
-        self.mqtt.subscribe(TOPIC_LAMP_CHANGE_NOTIFICATION)
+        self.mqtt.subscribe(TOPIC_LAMP_CHANGE_NOTIFICATION, qos=1)
         self.mqtt.message_callback_add(TOPIC_LAMP_CHANGE_NOTIFICATION,
                                        self.receive_new_lamp_state)
 
@@ -109,7 +109,7 @@ class LampiApp(App):
                'brightness': self._brightness,
                'on': self.lamp_is_on,
                'client': MQTT_CLIENT_ID}
-        self.mqtt.publish(TOPIC_SET_LAMP_CONFIG, json.dumps(msg))
+        self.mqtt.publish(TOPIC_SET_LAMP_CONFIG, json.dumps(msg), qos=1)
         self._publish_clock = None
 
     def set_up_GPIO_and_IP_popup(self):

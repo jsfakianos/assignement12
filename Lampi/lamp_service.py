@@ -76,7 +76,7 @@ class LampService(object):
     def on_connect(self, client, userdata, rc, unknown):
         self._client.publish(client_state_topic(MQTT_CLIENT_ID), "1",
                              qos=2, retain=True)
-        self._client.subscribe(TOPIC_SET_LAMP_CONFIG)
+        self._client.subscribe(TOPIC_SET_LAMP_CONFIG, qos=1)
 
     def default_on_message(self, client, userdata, msg):
         print("Received unexpected message on topic " +
@@ -104,7 +104,7 @@ class LampService(object):
                   'on': self.get_current_onoff(),
                   'client': self.get_last_client()}
         self._client.publish(TOPIC_LAMP_CHANGE_NOTIFICATION,
-                             json.dumps(config), retain=True)
+                             json.dumps(config), qos=1, retain=True)
 
     def get_last_client(self):
         return self.db['client']
