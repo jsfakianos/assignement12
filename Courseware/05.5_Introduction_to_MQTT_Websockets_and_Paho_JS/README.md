@@ -111,7 +111,7 @@ connected-devices/Web/static/test
 Open a new document **Web/static/test/bin/service.py** and insert the following python code:
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import paho.mqtt.client as mqtt
 import json
@@ -125,24 +125,24 @@ configuration = {}
 client = mqtt.Client()
 
 def on_connect(client, userdata, flags, rc):
-    print "... connected"
+    print( "... connected")
 
-    print "connection result: "
-    print rc
+    print( "connection result: ")
+    print( rc)
 
 
 def on_disconnect(client, userdata, rc):
-    print "... disconnected"
+    print("... disconnected")
 
 
 def go():
     i = 0
     while True:
-        if i == sys.maxint:
+        if i == sys.maxsize:
             i = 0
 
         message = json.dumps(configuration)
-        print "message: " + message
+        print( "message: " + message)
         configuration['value'] = i
         client.publish("/devices/foobar/label/changed",
                       payload = json.dumps(configuration))
@@ -152,16 +152,16 @@ def go():
 
 if __name__ == "__main__":
     client.on_connect = on_connect
-    print "... set connection listener"
+    print("... set connection listener")
 
     client.on_disconnect = on_disconnect
-    print "... set disconnection listener"
+    print("... set disconnection listener")
 
     client.connect('localhost', port=PORT, keepalive=60)
-    print "... tried to connect"
+    print( "... tried to connect")
 
     client.loop_start()
-    print "... starting client loop"
+    print("... starting client loop")
 
     go()
 ```
