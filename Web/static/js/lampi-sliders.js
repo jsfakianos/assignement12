@@ -13,7 +13,7 @@ function setSliderValues(hue, saturation, brightness) {
 }
 
 function updateSliderStyles(hue, saturation, brightness) {
-  updateSaturationSlider(saturation);
+  updateSaturationSlider(hue);
   updateHueThumb(hue);
   updateSaturationThumb(hue, saturation);
   updateBrightnessThumb(brightness);
