@@ -69,7 +69,7 @@ Then we will install the most recent version:
 ```bash
 $cloud sudo wget https://bootstrap.pypa.io/get-pip.py
 $cloud sudo chmod +x get-pip.py
-$cloud sudo ./get-pip.py
+$cloud sudo python3 ./get-pip.py
 ```
 
 
