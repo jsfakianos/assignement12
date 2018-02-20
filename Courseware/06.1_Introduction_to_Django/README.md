@@ -50,7 +50,8 @@ The Django Tutorial has seven parts.  Read the notes below for each part **befor
         * Listen on all Public IPs by invoking the server with `python3 manage.py runserver 0:8000`
     * When reading the tutorial, pay attention to the difference between a Django Project and a Django App.
     <br/>
-    ![](Images/django_tutorial_initial_page.gif)
+
+![](Images/django_tutorial_initial_page.gif)
 
 2. [Databases, Models, and Migrations](https://docs.djangoproject.com/en/1.10/intro/tutorial02/)
 
