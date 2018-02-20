@@ -27,4 +27,6 @@ Any/all of these compatibility notes should be considered temporary - a future v
 
 # [Chapter 5: Dynamic Web Interactivity with Javascript](Courseware/05.md)
 
+# [Chapter 6: Web Frameworks](Courseware/06.md)
+
 &copy; 2015-18 LeanDog, Inc. and Nick Barendt
