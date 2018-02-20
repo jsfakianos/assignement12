@@ -10,7 +10,7 @@ If you do not already have an RSA key for login use (separate from GitHub!), ple
 
 ```
 Host <YOUR RASPBERRY PI IP ADDRESS GOES HERE>
-  IdentityFile ~/.ssh/ida_rsa # YOUR PRIVATE KEY FILENAME GOES HERE
+  IdentityFile ~/.ssh/id_rsa # YOUR PRIVATE KEY FILENAME GOES HERE
   User pi
 ```
 
@@ -83,7 +83,7 @@ Now we'll need to enable agent forwarding so we can use our GitHub key while ssh
 
 ```
 Host <YOUR RASPBERRY PI IP ADDRESS GOES HERE>
-  IdentityFile ~/.ssh/ida_rsa # YOUR PRIVATE KEY FILENAME GOES HERE
+  IdentityFile ~/.ssh/id_rsa # YOUR PRIVATE KEY FILENAME GOES HERE
   ForwardAgent yes
   User pi
 ```
