@@ -228,7 +228,7 @@ Refer to our [previous section on Supervisor](../04.06_Supervisord/README.md)
 ## Extending the Django Admin
 
 We need to tell the Django Admin that it should support our new `Lampi` model.  
-Modify `lampi/admin.py` to register `Lampi` with the ['admin.site.register` function](https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#modeladmin-objects) as in Part 7 of the Django Tutorial.
+Modify `lampi/admin.py` to register `Lampi` with the ['admin.site.register` function](https://docs.djangoproject.com/en/2.0/ref/contrib/admin/#modeladmin-objects) as in Part 7 of the Django Tutorial.
 
 Log into the Admin interface and verify that you can see the `Lampi` model:
 

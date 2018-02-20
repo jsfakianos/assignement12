@@ -34,7 +34,7 @@ Build the tutorial project in a directory that will not cause you issues or conf
 
 The Django Tutorial has seven parts.  Read the notes below for each part **before** doing that section of the tutorial.
 
-1. [Writing your first Django app](https://docs.djangoproject.com/en/1.10/intro/tutorial01/)
+1. [Writing your first Django app](https://docs.djangoproject.com/en/2.0/intro/tutorial01/)
 
     * [Install Django](https://docs.djangoproject.com/en/2.0/topics/install/#installing-official-release) on EC2 with [pip](https://docs.djangoproject.com/en/2.0/topics/install/#installing-an-official-release-with-pip)
 
@@ -53,31 +53,31 @@ The Django Tutorial has seven parts.  Read the notes below for each part **befor
 
 ![](Images/django_tutorial_initial_page.gif)
 
-2. [Databases, Models, and Migrations](https://docs.djangoproject.com/en/1.10/intro/tutorial02/)
+2. [Databases, Models, and Migrations](https://docs.djangoproject.com/en/2.0/intro/tutorial02/)
 
     * While a high performance SQL server is invaluable, for the course stick to the [SQLite datbase](https://www.sqlite.org/).  Support for it is built into Python, making it trivial to use.   (You might also be interested to learn about [how widely deployed SQLite is](https://www.sqlite.org/mostdeployed.html) - the numbers are eye popping).
     * You might want to install the SQLite command-line interface `sudo apt-get install -y sqlite` (not necessary, but might be useful).
     * Make sure you understand how Primary Keys `pk` are used in Models and in queries.
 
-3. [Views and Templates](https://docs.djangoproject.com/en/1.10/intro/tutorial03/)
+3. [Views and Templates](https://docs.djangoproject.com/en/2.0/intro/tutorial03/)
 
     * Make sure you understand the URL pattern configuration and the simple regular expressions used for them.
     * Make sure you understand _Template namespacing_.  The pattern is repeated for other Django components (e.g., static files).
     * _URL namespacing_ is equally important, but different.
 
-4. [Forms, POST, and Generic Views](https://docs.djangoproject.com/en/1.10/intro/tutorial04/)
+4. [Forms, POST, and Generic Views](https://docs.djangoproject.com/en/2.0/intro/tutorial04/)
 
     * Make sure you understand Form POST and `request.POST` and how to write code to handle POSTs..
     * Make sure you understand the basics of Generic Views.
 
-5. [Automated Testing](https://docs.djangoproject.com/en/1.10/intro/tutorial05/)
+5. [Automated Testing](https://docs.djangoproject.com/en/2.0/intro/tutorial05/)
 
     * You can **skip** this section.  Automated testing is *amazing* and you should do it, but it is beyond the scope of this course.
-6. [Static Content](https://docs.djangoproject.com/en/1.10/intro/tutorial06/)
+6. [Static Content](https://docs.djangoproject.com/en/2.0/intro/tutorial06/)
 
     * Make sure you understand where static files should reside within your project files (more namespacing), and how to reference them within your template files.
 
-7. [Customizing the Admin Form](https://docs.djangoproject.com/en/1.10/intro/tutorial07/)
+7. [Customizing the Admin Form](https://docs.djangoproject.com/en/2.0/intro/tutorial07/)
 
     * Make sure you understand how to add a Model to the Admin interface.
 
