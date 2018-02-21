@@ -29,10 +29,10 @@ user = models.ForeignKey(User,
     on_delete=models.SET(get_parked_user))
 ``` 
 
-Add a `__unicode__` method to your `Lampi` model class for easier debugging, like so:
+Add a `__str__` method to your `Lampi` model class for easier debugging, like so:
 
 ```python
-    def __unicode__(self):
+    def __str__(self):
         return "{}: {}".format(self.device_id, self.name)
 ```
 
