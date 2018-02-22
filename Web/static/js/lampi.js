@@ -1,7 +1,7 @@
 const hostAddress = window.location.hostname;
 const hostPort = "50002";
 const clientId = Math.random() + "_web_client";
-const deviceId = ""; // FILL IN WITH THE DEVICEID OF YOUR LAMPI DEVICE
+const deviceId = "b827ebba0387"; // FILL IN WITH THE DEVICEID OF YOUR LAMPI DEVICE
 
 function LampiPage($){
 
@@ -73,11 +73,11 @@ function LampiPage($){
         onSliderInput : function(inputEvent) {
           value = Number(inputEvent.target.value);
 
-          if(event.target.id == "hue-slider") {
+          if(inputEvent.target.id == "hue-slider") {
             obj.lampState.color.h = value;
-          } else if(event.target.id == "saturation-slider") {
+          } else if(inputEvent.target.id == "saturation-slider") {
             obj.lampState.color.s = value;
-          } else if(event.target.id == "brightness-slider") {
+          } else if(inputEvent.target.id == "brightness-slider") {
             obj.lampState.brightness = value;
           }
 
