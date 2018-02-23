@@ -149,7 +149,7 @@ function LampiPage($){
             clientId),
         updateTimer : null,
         isManipulatingSlider :false,
-        update: false,
+        updated: false,
 
         init : function() {
 
