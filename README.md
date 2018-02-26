@@ -29,4 +29,6 @@ Any/all of these compatibility notes should be considered temporary - a future v
 
 # [Chapter 6: Web Frameworks](Courseware/06.md)
 
+# [Chapter 7: Production Web Deployment with NGINX, uWSGI & Django, Plus User-Device Association](Courseware/07.md)
+
 &copy; 2015-18 LeanDog, Inc. and Nick Barendt

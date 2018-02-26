@@ -4,13 +4,12 @@ import sys
 import argparse
 import colorsys
 from time import sleep
-
 import paho.mqtt.publish as mqtt_publish
 from paho.mqtt.client import Client
-
 from lamp_common import *
 
 MQTT_CLIENT_ID = 'lamp_cmd'
+
 
 class LampiCmd(object):
 
