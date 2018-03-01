@@ -44,7 +44,7 @@ that should cause the popup to be displayed.
 You can simulate an **associated** message:
 
 ```bash
-mosquitto_pub -t "/lamp/associated" -m '{"associated": false}'
+mosquitto_pub -t "/lamp/associated" -m '{"associated": true}'
 ```
 
 that should cause the popup to disappear and restore the normal LAMPI UI.
