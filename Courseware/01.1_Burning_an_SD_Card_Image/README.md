@@ -34,9 +34,9 @@ The Raspberry Pi 3 uses Micro SD cards for its filesystem.  We have to put the O
 
 3. We need access to the Serial Console on the Raspberry Pi.  Due to some hardware changes on the Raspberry Pi 3 required to add Bluetooth support, we need to manually enable the Serial Console port in the ```config.txt``` file in the ```boot``` partition (aka volume) of the SD card you just burned.  The ```boot``` partition is a FAT32 filesystem (good, old Windows/DOS format) and can be read and written by Windows, Mac, and Linux systems.  Mount the ```boot``` partition if it is not already and edit the ```config.txt``` with your favorite text editor (Notepad, vi, etc.) and add the following line at the end of the file:
 
-       ```
-       enable_uart=1
-       ```
+    ```
+    enable_uart=1
+    ```
 
 4. Save and close ```config.txt```.
 
