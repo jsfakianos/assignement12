@@ -3,4 +3,4 @@
 
 cache_update_valid_secs: 900
 
-mosquitto_ubuntu_version: 1.4.14-0mosquitto1~xenial1
+mosquitto_ubuntu_version: 1.4.15-0mosquitto1~xenial1
