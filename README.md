@@ -31,4 +31,7 @@ Any/all of these compatibility notes should be considered temporary - a future v
 
 # [Chapter 7: Production Web Deployment with NGINX, uWSGI & Django, Plus User-Device Association](Courseware/07.md)
 
+# [Chapter 8: Introduction to Mobile Development](Courseware/08.md)
+
+
 &copy; 2015-18 LeanDog, Inc. and Nick Barendt
