@@ -1,0 +1,7 @@
+# using workaround https://github.com/ansible/ansible-modules-core/issues/1741
+- name: upgrade everything
+  become: True
+  command: apt-get upgrade -y -qq
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+

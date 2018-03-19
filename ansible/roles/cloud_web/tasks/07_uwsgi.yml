@@ -1,6 +1,15 @@
 - name: gather ec2 facts for later
   ec2_metadata_facts:
 
+- name: install dependencies for uwsgi
+  become: True
+  apt:
+    name: "{{ item }}"
+    cache_valid_time: "{{ cache_update_valid_secs }}"
+  with_items:
+    - build-essential
+    - python3-dev
+
 - name: install uwsgi
   become: True
   pip:

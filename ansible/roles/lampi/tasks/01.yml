@@ -1,4 +1,5 @@
 - import_tasks: 01_apt_cache_update.yml
+- import_tasks: 01_apt_upgrade.yml
 - import_tasks: 01_git.yml
 - import_tasks: 01_enable_ssh.yml
 - import_tasks: 01_pigpio.yml
