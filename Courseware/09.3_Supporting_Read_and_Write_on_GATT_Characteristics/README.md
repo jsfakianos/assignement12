@@ -20,7 +20,7 @@ By convention, we can use our UUID as a "base", similar to how the Bluetooth SIG
 
 ## Our State Object
 
-Let's build a simple object to hold some device state information.
+Let's build a simple object to hold some device state information, with one accessor method.
 
 Create a new file `device-state.js`
 
@@ -35,8 +35,20 @@ function DeviceState() {
 
 util.inherits(DeviceState, events.EventEmitter);
 
+DeviceState.prototype.set_value = function(new_value) {
+    if( this.value !== new_value) {
+        this.value = new_value % 256;
+        this.emit('changed', this.value);
+    }
+};
+
+
 module.exports = DeviceState;
 ```
+
+The `set_value()` method will update the `DeviceState` `value` property with the  `new_value` passed in, if different from the current value (see [JavaScript comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) for the `!==` operator if you are unfamiliar with strict equality).   The `set_value()` method limits the maximum to 255 (0xFF) with the modulus (`% 256`).  If the value has been updated, any callbacks registered for the `'changed'` event will be invoked and passed the new value (this happens because we call `this.emit('changed', this.value)`, inherited from the [EventEmitter](https://nodejs.org/docs/latest-v8.x/api/events.html#events_class_eventemitter) parent class).
+
+
 
 ## Our Number Service
 
@@ -174,20 +186,7 @@ If you drill into the 'Some Number' Characteristic and use the 'Read Again' mech
 
 ## Writable Characteristics
 
-Now, let's allow users to modify our 'Some Number' Characteristic.
-
-Modify `device-state.js` to add the following `set_value()` method:
-
-```node
-DeviceState.prototype.set_value = function(new_value) {
-    if( this.value !== new_value) {
-        this.value = new_value % 256;
-        this.emit('changed', this.value);
-    }
-};
-```
-
-This will update the value passed in, if different from the current value (see [JavaScript comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) for the `!==` if you are unfamiliar with strict equality), and will callback any regsitered handlers with the new value to notify any objects that care.
+Now, let's allow users (Bluetooth Centrals, really) to modify our 'Some Number' Characteristic.
 
 Modify `number-service.js` and add `'write'` to the `properties` list after `'read'`.  Then add the following method after the 'onReadRequest':
 
