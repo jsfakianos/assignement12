@@ -32,7 +32,7 @@ The 'Device Information Service' should support the following Characteristics:
 
 | Characteristic | UUID | Descriptors | Value |
 | -------------- | ---- | ----------- | ----- |
-| [Manufacturer Name String](https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.characteristic.manufacturer_name_string.xml) | 0x2A29 | | 'CWRU'| 
+| [Manufacturer Name String](https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.characteristic.manufacturer_name_string.xml) | 0x2A29 | | 'CWRU' or 'CSU'| 
 | | | [0x2901](https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.descriptor.gatt.characteristic_user_description.xml):'Manufacturer Name'| |
 | | | [0x2904](https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.descriptor.gatt.characteristic_presentation_format.xml): appropriate value for Characterstic |  | 
 | [Model Number String](https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.characteristic.model_number_string.xml) | 0x2A24 | | 'LAMPI'| 
@@ -64,7 +64,7 @@ The 'Lamp Service' should support the following Characteristics:
 | | [0x2901](https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.descriptor.gatt.characteristic_user_description.xml): 'Brightness'| |
 | | [0x2904](https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.descriptor.gatt.characteristic_presentation_format.xml): appropriate value for Characterstic |  |
 | HSV     | | lamp HSV Color encoded in array of three UINT8 elements in this order [hue, saturation, value] (0x00 is 0.0; 0xFF is full hue/saturation) - value should always be 0xFF|
-| | [0x2901](https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.descriptor.gatt.characteristic_user_description.xml): 'Brightness'| |
+| | [0x2901](https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.descriptor.gatt.characteristic_user_description.xml): 'HSV'| |
 | | [0x2904](https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.descriptor.gatt.characteristic_presentation_format.xml): appropriate value for Characterstic |  |
 
 
