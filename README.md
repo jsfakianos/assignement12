@@ -35,4 +35,6 @@ Any/all of these compatibility notes should be considered temporary - a future v
 
 # [Chapter 9: Introduction to Bluetooth Low Energy](Courseware/09.md)
 
+# [Chapter 10: Introduction to Analytics](Courseware/10.md)
+
 &copy; 2015-18 LeanDog, Inc. and Nick Barendt

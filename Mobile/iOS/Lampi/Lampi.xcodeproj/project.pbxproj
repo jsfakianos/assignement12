@@ -14,6 +14,7 @@
 		8C8818D31BD7D7F200D3A2D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C8818D21BD7D7F200D3A2D9 /* Assets.xcassets */; };
 		8C8818D61BD7D7F200D3A2D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C8818D41BD7D7F200D3A2D9 /* LaunchScreen.storyboard */; };
 		8C8818DF1BD7EF3600D3A2D9 /* GradientSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8818DE1BD7EF3600D3A2D9 /* GradientSlider.m */; };
+		A76564BC1E785C0F00E799DD /* BluetoothLampService.m in Sources */ = {isa = PBXBuildFile; fileRef = A76564BA1E785C0F00E799DD /* BluetoothLampService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,9 @@
 		8C8818D71BD7D7F200D3A2D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C8818DD1BD7EF3600D3A2D9 /* GradientSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientSlider.h; sourceTree = "<group>"; };
 		8C8818DE1BD7EF3600D3A2D9 /* GradientSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientSlider.m; sourceTree = "<group>"; };
+		A76564B91E785C0F00E799DD /* BluetoothLampService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothLampService.h; sourceTree = "<group>"; };
+		A76564BA1E785C0F00E799DD /* BluetoothLampService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothLampService.m; sourceTree = "<group>"; };
+		A76564BB1E785C0F00E799DD /* BluetoothLampDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothLampDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,9 @@
 				8C8818D21BD7D7F200D3A2D9 /* Assets.xcassets */,
 				8C8818D41BD7D7F200D3A2D9 /* LaunchScreen.storyboard */,
 				8C8818D71BD7D7F200D3A2D9 /* Info.plist */,
+				A76564B91E785C0F00E799DD /* BluetoothLampService.h */,
+				A76564BA1E785C0F00E799DD /* BluetoothLampService.m */,
+				A76564BB1E785C0F00E799DD /* BluetoothLampDelegate.h */,
 				8C8818C61BD7D7F200D3A2D9 /* Supporting Files */,
 			);
 			path = Lampi;
@@ -155,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A76564BC1E785C0F00E799DD /* BluetoothLampService.m in Sources */,
 				8C8818DF1BD7EF3600D3A2D9 /* GradientSlider.m in Sources */,
 				8C8818CB1BD7D7F200D3A2D9 /* AppDelegate.m in Sources */,
 				8C53448B1BD91F2C001927C8 /* LampiViewController.m in Sources */,

@@ -176,6 +176,9 @@
                                             <constraint firstAttribute="width" constant="44" id="yhC-tf-2jh"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="power_light"/>
+                                        <connections>
+                                            <action selector="isOnOffToggled:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xkE-uD-5so"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

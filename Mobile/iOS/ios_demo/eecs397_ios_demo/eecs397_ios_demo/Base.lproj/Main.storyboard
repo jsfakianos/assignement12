@@ -40,10 +40,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="8yn-eM-n7h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8uW-02-14l"/>
-                            <constraint firstItem="dWt-6Y-EjY" firstAttribute="centerX" secondItem="8yn-eM-n7h" secondAttribute="centerX" id="SdJ-tD-1P6"/>
+                            <constraint firstItem="dWt-6Y-EjY" firstAttribute="leading" secondItem="8yn-eM-n7h" secondAttribute="leading" id="BfI-Xb-TCr"/>
+                            <constraint firstItem="dWt-6Y-EjY" firstAttribute="top" secondItem="8yn-eM-n7h" secondAttribute="bottom" constant="22" id="TT9-RT-z1B"/>
                             <constraint firstItem="dWt-6Y-EjY" firstAttribute="width" secondItem="8yn-eM-n7h" secondAttribute="width" id="Vlx-hs-RCp"/>
                             <constraint firstItem="8yn-eM-n7h" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="110" id="YiV-Pm-QRP"/>
-                            <constraint firstItem="dWt-6Y-EjY" firstAttribute="top" secondItem="8yn-eM-n7h" secondAttribute="bottom" constant="22" id="eI4-tH-5SF"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dWt-6Y-EjY" secondAttribute="trailing" constant="20" symbolic="YES" id="xry-cs-5Qg"/>
                         </constraints>
                     </view>
                     <connections>

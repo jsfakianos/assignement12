@@ -34,3 +34,7 @@ class AddLampiView(LoginRequiredMixin, generic.FormView):
         device = form.cleaned_data['device']
         device.associate_and_publish_associated_msg(self.request.user)
         return super(AddLampiView, self).form_valid(form)
+
+
+class DashboardView(LoginRequiredMixin, generic.TemplateView):
+    template_name = 'lampi/dashboard.html'
