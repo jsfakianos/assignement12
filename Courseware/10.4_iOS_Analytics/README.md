@@ -52,7 +52,7 @@ This will download the required libraries and build them (it might take a moment
 
 ## XCode Project Settings
 
-Drag the **KeenClient.framework** from the **Carthage/Build** directory into the **Linked Frameworks and Libraries** section of the XCode project:
+Drag the **KeenClient.framework** from the **Carthage/Build** directory into the **Embedded Binaries** section of the XCode project:
 
 ![](Images/addKeenFramework.gif)
 
@@ -63,7 +63,7 @@ Then add **CoreBluetooth** (if not already there), **CoreLocation**, and **Syste
 
 Be sure to read and follow [Usage](https://github.com/keenlabs/KeenClient-iOS#usage) for creating a `KeenClient` with the appropriate credentials.
 
-Add `#import “KeenClient.h”` to the .m file(s) that need access to the KeenClient-iOS library.
+Add `#import <KeenClient/KeenClient.h>` to the .m file(s) that need access to the KeenClient-iOS library.
 
 Like all good mobile analytics platforms, Keen automatically supports Geo Location. See [Geo Location and Permissionsin iOS](https://github.com/keenlabs/KeenClient-iOS#requesting-authorization-for-location-in-ios-8).  You will need to modify your applications **plist** file to prompt the user to grant permission to track position while the application is running.  Add [NSLocationWhenInUseUsageDescription](https://developer.apple.com/library/prerelease/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW26) to your application's `plist` (see [here](http://stackoverflow.com/questions/24062509/location-services-not-working-in-ios-8) for additional clues).
 

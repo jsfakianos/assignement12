@@ -26,7 +26,7 @@ Please refer to the numbered view of the dashboard here for what should appear i
 
 | Cell # | Chart Type |
 | ------ | ---------- | 
-|    1   |  "step" |
+|    1   |  "area-step" |
 |    2   |  - |
 |    3   |  "area" |
 |    4   |  "area" |
@@ -39,18 +39,18 @@ Please refer to the numbered view of the dashboard here for what should appear i
 
 | Cell # | Collection | Query | Target/Actor | Time Frame | Notes  |
 | --| ---------- | ----- | ------------ | ---------  | -----  |
-| 1 | 'pageviews'| funnel| 'user.uuid'  | this\_14\_days | Steps on 'url.info.path' filter for "/", "/lampi/", "/lampi/add/", "/lampi/device/" |
+| 1 | `pageviews`| [funnel](https://keen.io/docs/api/#funnels)| 'user.uuid'  | this\_14\_days | 3 [Steps](https://keen.io/docs/api/#steps) with the same `actor_property`, each with a different filter on `property_name` of 'url.info.path'. Step filters, in order (of the form `operator`:`property_value`): "eq":"/lampi/", "eq":"/lampi/add/", "contains":"/lampi/device/". (`inverted` and `optional` should both be `false`) |
 | 2 |  -         |  -    |  -           | -            | Leave blank |
-| 3 | 'pageviews'| count |              | this\_14\_days | group by "tech.browser.family" interval "daily" |  
-| 4 | 'ui'       | count |              | this\_14\_days | group by "lampi.ui" interval "daily" |
-| 5 | 'activations'| count\_unique | 'device\_id'  | this\_10\_years| set title on chart; set color "#49c5b1" |
+| 3 | `pageviews`| [count](https://keen.io/docs/api/#count) |              | this\_14\_days | group by "tech.browser.family" interval "daily" |  
+| 4 | `ui`       | [count](https://keen.io/docs/api/#count) |              | this\_14\_days | group by "lampi.ui" interval "daily" |
+| 5 | `activations`| [count\_unique](https://keen.io/docs/api/#count-unique) | 'device\_id'  | this\_10\_years| set title on chart; set color "#49c5b1" |
 | 6 |  -         |  -    |  -           | -            | Leave blank |
-| 7 | 'devicestate'| average | 'state.brightness' | this\_7\_days| filter "state.on" is True group by "timestamp.info.day\_of\_week\_string"|
-| 8 | 'devicemonitoring''| count |  | this\_7\_days| filter "service" is "mqttbridge" and "state" is "disconnected" group by "timestamp.info.day\_of\_week\_string"|
+| 7 | `devicestate`| [average](https://keen.io/docs/api/#average) | 'state.brightness' | this\_7\_days| filter "state.on" is True group by "timestamp.info.day\_of\_week\_string"|
+| 8 | `devicemonitoring`| [count](https://keen.io/docs/api/#count) |  | this\_7\_days| filter "service" is "mqttbridge" and "state" is "disconnected" group by "timestamp.info.day\_of\_week\_string"|
 
 Don't forget to add "Titles" and "Notes" for each, based on the images above.
 
-**NOTE:  it is okay if there are small differences in your chart colors, gaps between "tiles" in the dashboard, etc.**  Your dashboard should generally look like the images here.
+**NOTE:  Your dashboard should generally look like the images here, but, it is okay if there are small differences in your chart colors, gaps between "tiles" in the dashboard, etc.**  
 
 ## Instrumentation
 
@@ -61,7 +61,7 @@ You will need to add instrumentation (event recording) to the Web, iOS, and MQTT
 There are two parts to this:
 
 1. The Keen Auto Collector (hint: put it in a template so the whole site gets covered) - this will automatically create and populate the following collections: `pageviews`, `clicks`, and `form_submissions` with Keen default properties
-1. Detailed tracking of UI events in `lampi.js` - you will need to instrument the the sliders and buttons; events from 'click', 'change', and 'input' UI should be stored in a collection named `ui` (the details of the properties for events in the `ui` collection are below).
+1. Detailed tracking of UI events in `lampi.js` - you will need to instrument the the sliders and buttons; events from 'click', 'change', and 'input' UI should be stored in a collection named `ui` (the details of the properties for events in the `ui` collection are below).  Use [keen-tracking.js](https://github.com/keen/keen-tracking.js) for this (in addition to the Auto Collector).
 
 Do not worry about the volume of analytics events at this point (e.g., fine if many events are generated as a slider is moved).  Do not worry about instrumenting the Dashboard page.
 
