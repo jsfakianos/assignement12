@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from .models import Lampi
 from django.conf import settings
 from lampi.forms import AddLampiForm
-from management.commands.analytics import KeenEventRecorder
+from .management.commands.analytics import KeenEventRecorder
 
 keen_credentials = settings.KEEN_CREDENTIALS
 
