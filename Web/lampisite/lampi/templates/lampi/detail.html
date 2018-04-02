@@ -4,6 +4,7 @@
 {% block title %}LAMPI{% endblock %}
 
 {% block additional_head_content %}
+  <meta name="description" content="LAMPI Control for {{ device.device_id }}">
   <link rel="stylesheet" type="text/css"
          href="{% static 'lampi/css/lampi-sliders.css' %}">
 
@@ -20,6 +21,9 @@
         window_global['device_id'] = "{{ device.device_id }}";
         window_global['mqtt'] = {'hostname': window.location.hostname,
                                 'websockets_port': 50002};
+        window_global['project_id'] = "{{ keen.project_id }}";
+        window_global['write_key'] = "{{ keen.write_key }}";
+
     </script>
 		<div id="top-pane">
 			<div id="sliders">
@@ -39,7 +43,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js" type="text/javascript"></script>
 
     <script src="{% static 'lampi/js/tinycolor.js' %}" type="text/javascript"></script>
+    <script src="https://d26b395fwzu5fz.cloudfront.net/keen-tracking-1.4.0.min.js"></script>
     <script src="{% static 'lampi/js/lampi.js' %}" type="text/javascript"></script>
     <script src="{% static 'lampi/js/lampi-sliders.js' %}" type="text/javascript"></script>
+
 
 {% endblock %}

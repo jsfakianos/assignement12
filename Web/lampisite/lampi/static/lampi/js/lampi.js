@@ -3,6 +3,143 @@ const hostPort = window_global['mqtt']['websockets_port'];
 const clientId = Math.random() + "_web_client";
 const deviceId = window_global['device_id'];
 
+function setup_analytics(obj) {
+    var page_description = '';
+
+    meta_description = $("meta[name='description']");
+    if(meta_description.length > 0 ) {
+        page_description = meta_description[0].content;
+    }
+
+    var keenClient = new Keen({
+            projectId: window_global['project_id'],
+            writeKey: window_global['write_key']
+        });
+
+    var sessionCookie = Keen.utils.cookie('keen');
+    if (!sessionCookie.get('uuid')) {
+        sessionCookie.set('uuid', Keen.helpers.getUniqueId());
+    }
+
+    var sessionTimer = Keen.utils.timer();
+    sessionTimer.start();
+
+    Keen.listenTo({
+        'click #power': function(e) {
+            // 500ms to record event
+            keenClient.recordEvent('ui', {
+            'element': {
+                id: e.target.id,
+                value: obj.lampState.on,
+            },
+        });
+        },
+        'change .slider': function(e) {
+            // 500ms to record event
+            keenClient.recordEvent('ui', {
+            'element': {
+               id:  e.target.id,
+               value: Number(e.target.value),
+            },
+        });
+        },
+        'input .slider': function(e) {
+            // 500ms to record event
+            keenClient.recordEvent('ui', {
+            'element': {
+               id:  e.target.id,
+               value: Number(e.target.value),
+            },
+        });
+        },
+    });
+
+    keenClient.extendEvents(function(){
+        return {
+            user_agent: '${keen.user_agent}',
+            tracked_by: 'lampi.js',
+            referrer: {
+                // info: add_on
+                full: document.referrer,
+            },
+            // geo: add_on
+            geo: {
+            },
+            tech: {
+                profile: Keen.helpers.getBrowserProfile(),
+                // device, os, browser: add-on
+            },
+            url: {
+                // info: add_on
+                full: document.location.href
+            },
+            time: {
+                // utc, local add_on
+            },
+            ip_address: '${keen.ip}',
+            page: {
+                title: document.title,
+                description: page_description, 
+            },
+            local_time_full: new Date().toISOString(),
+            user: {
+                uuid: sessionCookie.get('uuid'),
+            },
+            lampi: {
+                device_id: window_global['device_id'],
+                ui: 'web',
+            },
+            keen: {
+                timestamp: new Date().toISOString(),
+                addons: [
+                  {
+                    "name": "keen:ip_to_geo",
+                    "input": {
+                      "ip": "ip_address"
+                    },
+                    "output" : "geo"
+                  },
+                  {
+                    "name": "keen:ua_parser",
+                    "input": {
+                      "ua_string": "user_agent"
+                    },
+                    "output": "tech"
+                  },              
+                  {
+                    "name": "keen:url_parser",
+                    "input": {
+                      "url": "url.full"
+                    },
+                    "output": "url.info"
+                  },
+                  {
+                    "name": "keen:url_parser",
+                    "input": {
+                      "url": "referrer.full"
+                    },
+                    "output": "referrer.info"
+                  },
+                  {
+                    "name": "keen:date_time_parser",
+                    "input": {
+                      "date_time": "keen.timestamp"
+                    },
+                    "output": "time.utc"
+                  },
+                  {
+                    "name": "keen:date_time_parser",
+                    "input": {
+                      "date_time": "local_time_full"
+                    },
+                    "output": "time.local"
+                  }
+                ]
+            }
+        };
+    });
+}
+
 function LampiPage($){
 
     console.log(clientId);
@@ -179,7 +316,11 @@ function LampiPage($){
     };
 
     obj.init();
+    setup_analytics(obj);
     return obj;
 }
 
 jQuery(LampiPage);
+
+
+

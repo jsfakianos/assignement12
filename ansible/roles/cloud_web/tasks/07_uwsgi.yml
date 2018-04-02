@@ -10,6 +10,12 @@
     - build-essential
     - python3-dev
 
+- name: install python-dev for uwsgi
+  become: True
+  apt:
+    name: python-dev
+    cache_valid_time: "{{ cache_update_valid_secs }}"
+
 - name: install uwsgi
   become: True
   pip:

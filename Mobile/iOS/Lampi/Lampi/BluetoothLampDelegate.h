@@ -7,5 +7,6 @@
 -(void)onUpdatedHue:(float)hue andSaturation:(float)saturation;
 -(void)onUpdatedBrightness:(float)brightness;
 -(void)onUpdatedOnOff:(BOOL)onOff;
+-(void)onUpdatedSerialNumber:(NSString*)serialNumber;
 
 @end

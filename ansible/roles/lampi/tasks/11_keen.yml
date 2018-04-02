@@ -1,0 +1,6 @@
+- name: install Keen analytics library
+  tags: [keen]
+  become: True
+  pip:
+    name: keen
+

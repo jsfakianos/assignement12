@@ -126,3 +126,9 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
 DEFAULT_USER = 'parked_device_user'
+
+KEEN_CREDENTIALS = {
+    'project_id': 'FILL IN',
+    'write_key': 'FILL IN',
+    'read_key': 'FILL IN',
+}

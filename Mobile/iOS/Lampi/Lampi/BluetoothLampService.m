@@ -4,6 +4,11 @@
 NSString *const DEVICE_ID = @"LAMPI b827ebba0387";
 
 NSString *const LAMPI_SERVICE_UUID = @"0001a7d3-d8a4-4fea-8174-1736e808c066";
+
+NSString *const DEVICE_INFO_UUID = @"180a";
+NSString *const SERIAL_NUMBER_UUID = @"2A25";
+
+
 NSString *const HSV_UUID = @"0002a7d3-d8a4-4fea-8174-1736e808c066";
 NSString *const BRIGHTNESS_UUID = @"0003a7d3-d8a4-4fea-8174-1736e808c066";
 NSString *const ON_OFF_UUID = @"0004a7d3-d8a4-4fea-8174-1736e808c066";
@@ -15,9 +20,11 @@ NSString *const ON_OFF_UUID = @"0004a7d3-d8a4-4fea-8174-1736e808c066";
 @property (nonatomic, strong) CBPeripheral *lampPeripheral;
 
 @property (nonatomic, strong) CBService *lampService;
+@property (nonatomic, strong) CBService *deviceService;
 @property (nonatomic, strong) CBCharacteristic *onOffCharacteristic;
 @property (nonatomic, strong) CBCharacteristic *hsvCharacteristic;
 @property (nonatomic, strong) CBCharacteristic *brightnessCharacteristic;
+@property (nonatomic, strong) CBCharacteristic *serialnumberCharacteristic;
 
 @property (nonatomic) BOOL shouldConnect;
 
@@ -125,7 +132,7 @@ NSString *const ON_OFF_UUID = @"0004a7d3-d8a4-4fea-8174-1736e808c066";
             [lampPeripheral discoverCharacteristics:nil forService:self.lampService];
         }
     } else {
-        [lampPeripheral discoverServices:@[[CBUUID UUIDWithString:LAMPI_SERVICE_UUID]]];
+        [lampPeripheral discoverServices:@[[CBUUID UUIDWithString:LAMPI_SERVICE_UUID], [CBUUID UUIDWithString:DEVICE_INFO_UUID]]];
     }
 }
 
@@ -143,10 +150,17 @@ NSString *const ON_OFF_UUID = @"0004a7d3-d8a4-4fea-8174-1736e808c066";
         if([service.UUID isEqual:[CBUUID UUIDWithString:LAMPI_SERVICE_UUID]]) {
             self.lampService = service;
         }
+        if([service.UUID isEqual:[CBUUID UUIDWithString:DEVICE_INFO_UUID]]) {
+            self.deviceService = service;
+        }
+        
     }
     
     if(self.lampService != nil) {
         [lampPeripheral discoverCharacteristics:nil forService:self.lampService];
+    }
+    if(self.deviceService != nil) {
+        [lampPeripheral discoverCharacteristics:@[[CBUUID UUIDWithString:SERIAL_NUMBER_UUID]] forService:self.deviceService];
     }
 }
 
@@ -174,10 +188,15 @@ NSString *const ON_OFF_UUID = @"0004a7d3-d8a4-4fea-8174-1736e808c066";
             
             [self.lampPeripheral setNotifyValue:YES forCharacteristic:self.onOffCharacteristic];
             
+        } else if([characteristic.UUID isEqual:[CBUUID UUIDWithString:SERIAL_NUMBER_UUID]]) {
+            self.serialnumberCharacteristic = characteristic;
+            
+            [self.lampPeripheral readValueForCharacteristic:self.serialnumberCharacteristic];
         }
+
     }
     
-    if(self.hsvCharacteristic != nil && self.brightnessCharacteristic != nil && self.onOffCharacteristic != nil) {
+    if(self.hsvCharacteristic != nil && self.brightnessCharacteristic != nil && self.onOffCharacteristic != nil && self.serialnumberCharacteristic != nil) {
         [self.delegate onLampConnected];
     }
 }
@@ -203,6 +222,10 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
         NSData *data = self.onOffCharacteristic.value;
         BOOL onOff = [self parseOnOff:data];
         [self.delegate onUpdatedOnOff:onOff];
+    } else if(characteristic == self.serialnumberCharacteristic) {
+        NSData *data = self.serialnumberCharacteristic.value;
+        NSString *serialNumber = [self parseSerialNumber:data];
+        [self.delegate onUpdatedSerialNumber:serialNumber];
     }
 }
 
@@ -227,6 +250,9 @@ didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
 -(BOOL)parseOnOff:(NSData*)data {
     const unsigned char* bytes = [data bytes];
     return bytes[0];
+}
+-(NSString*)parseSerialNumber:(NSData*)data {
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
 @end

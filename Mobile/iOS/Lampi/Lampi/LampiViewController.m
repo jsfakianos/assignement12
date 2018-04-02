@@ -1,6 +1,7 @@
 #import "LampiViewController.h"
 #import "GradientSlider.h"
 #import "BluetoothLampService.h"
+#import <KeenClient/KeenClient.h>
 
 @interface LampiViewController()
 
@@ -15,12 +16,20 @@
 
 @property (nonatomic) BOOL propertiesChanged;
 
+@property (nonatomic, weak) KeenClient *keen_client;
+@property (nonatomic, weak) NSString *serialNumber;
+
 @end
 
 @implementation LampiViewController
+
+NSString *const KEEN_PROJECT_ID = @"FILL IN";
+NSString *const KEEN_WRITE_KEY = @"FILL IN";
+
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
     if(self = [super initWithCoder:aDecoder]) {
         self.propertiesChanged = NO;
+        self.keen_client = nil;
         self.lampService = [[BluetoothLampService alloc] initWithDelegate:self];
     }
     return self;
@@ -36,22 +45,62 @@
 -(IBAction)onHueChanged:(id)sender {
     [self updateColors];
     [self beginSendPropertiesToLamp];
+    if(self.keen_client != nil){
+        NSDictionary *event = @{@"element":
+                                    @{
+                                        @"id": @"hue-slider",
+                                        @"value": [NSNumber numberWithDouble: self.hueSlider.value ],
+                                        }
+                                };
+        
+        [self.keen_client addEvent:event toEventCollection:@"ui" error:nil];
+    }
 }
 
 -(IBAction)onSaturationChanged:(id)sender {
     [self updateColors];
     [self beginSendPropertiesToLamp];
+    if(self.keen_client != nil){
+        NSDictionary *event = @{@"element":
+                                    @{
+                                        @"id": @"saturation-slider",
+                                        @"value": [NSNumber numberWithDouble: self.saturationSlider.value ],
+                                        }
+                                };
+        
+        [self.keen_client addEvent:event toEventCollection:@"ui" error:nil];
+    }
 }
 
 -(IBAction)onBrightnessChanged:(id)sender {
     [self updateColors];
     [self beginSendPropertiesToLamp];
+    if(self.keen_client != nil){
+        NSDictionary *event = @{@"element":
+                                    @{
+                                        @"id": @"brightness-slider",
+                                        @"value": [NSNumber numberWithDouble: self.brightnessSlider.value ],
+                                        }
+                                };
+        
+        [self.keen_client addEvent:event toEventCollection:@"ui" error:nil];
+    }
 }
 
 -(IBAction)isOnOffToggled:(id)sender {
     self.powerButton.selected = !self.powerButton.selected;
     [self.lampService changeOnOff:self.powerButton.selected];
     [self updateColors];
+    if(self.keen_client != nil){
+        NSDictionary *event = @{@"element":
+                                    @{
+                                        @"id": @"power",
+                                        @"value": [NSNumber numberWithBool: self.powerButton.selected ],
+                                        }
+                                };
+        
+        [self.keen_client addEvent:event toEventCollection:@"ui" error:nil];
+    }
 }
 
 -(void)beginSendPropertiesToLamp {
@@ -122,6 +171,33 @@
     self.powerButton.selected = onOff;
     [self updateColors];
 }
+
+-(void)onUpdatedSerialNumber:(NSString*)serialNumber{
+    self.serialNumber = serialNumber;
+    // configure analytics now that we have our device's ID
+    [KeenClient sharedClientWithProjectID:KEEN_PROJECT_ID andWriteKey:KEEN_WRITE_KEY andReadKey:nil];
+    self.keen_client = [KeenClient sharedClient];
+    self.keen_client.globalPropertiesDictionary = @{@"keen":
+                                                        @{
+                                                            @"addons":@[
+                                                                    @{
+                                                                        @"name":@"keen:ip_to_geo",
+                                                                        @"input":@{
+                                                                                @"ip":@"ip_address"
+                                                                                },
+                                                                        @"output":@"geo"
+                                                                        }
+                                                                    ]
+                                                            },
+                                                    @"ip_address": @"${keen.ip}",
+                                                    @"lampi":
+                                                        @{
+                                                            @"device_id": self.serialNumber,
+                                                            @"ui": @"ios",
+                                                            }
+                                                    };
+}
+
 
 
 @end

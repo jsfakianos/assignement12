@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <KeenClient/KeenClient.h>
 
 @interface AppDelegate ()
 
@@ -14,9 +15,15 @@
 
 @implementation AppDelegate
 
+NSString *const KEEN_PROJECT_ID = @"5ab535c4c9e77c0001692fb3";
+NSString *const KEEN_WRITE_KEY = @"A1659623AC19D1EC462E9E8683C301DE20D926184F88C1B321B09A81CDCC4218F4E381A26C29FBFC81CC1337FC97D178BE5878D76A302E0CBC9B9FE98DAE171D0D0FBA299E1D0533ED690F0F49BB077CF3A3495D96CEFF1864E975D3B0163D3D";
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // configure analytics
+    [KeenClient authorizeGeoLocationWhenInUse];
+    [KeenClient sharedClientWithProjectID:KEEN_PROJECT_ID andWriteKey:KEEN_WRITE_KEY andReadKey:nil];
     return YES;
 }
 
@@ -30,6 +37,14 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    UIBackgroundTaskIdentifier taskId = [application beginBackgroundTaskWithExpirationHandler:^(void) {
+        NSLog(@"Background task is being expired.");
+    }];
+
+    [[KeenClient sharedClient] uploadWithFinishedBlock:^(void) {
+        [application endBackgroundTask:taskId];
+    }];
+    
 }
 
 

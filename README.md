@@ -37,4 +37,6 @@ Any/all of these compatibility notes should be considered temporary - a future v
 
 # [Chapter 10: Introduction to Analytics](Courseware/10.md)
 
+# [Chapter 11: Remote Update](Courseware/11.md)
+
 &copy; 2015-18 LeanDog, Inc. and Nick Barendt

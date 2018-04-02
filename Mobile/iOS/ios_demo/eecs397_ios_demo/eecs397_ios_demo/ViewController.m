@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import <KeenClient/KeenClient.h>
 
 @interface ViewController ()
 
@@ -40,6 +40,18 @@ NSString *const SOME_NUMBER_UUID = @"7a4b0001-999f-4717-b63a-066e06971f59";
 -(IBAction)onSliderChanged:(UISlider*)sender {
     
     self.label.text = [NSString stringWithFormat:@"%f", self.slider.value];
+
+    // record an analytics event
+
+    NSDictionary *event = @{@"ios":
+                                @{
+                                    @"element": @"slider",
+                                    @"value": [NSNumber numberWithDouble: self.slider.value],
+                                    }
+                            };
+
+    [[KeenClient sharedClient] addEvent:event toEventCollection:@"ios_demo" error:nil];
+
     
     if( self.numberCharacteristic != nil ) {
         
