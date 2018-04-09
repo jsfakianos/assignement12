@@ -3,6 +3,7 @@ import platform
 import Queue
 import keen
 from requests import ConnectionError
+import threading
 
 
 class KeenEventRecorder:
@@ -11,21 +12,25 @@ class KeenEventRecorder:
         keen.write_key = keen_write_key
         self._device_id = device_id
         self._keen_queue = Queue.Queue()
+        self._keen_thread = threading.Thread(target=self._transmit_event)
+        self._keen_thread.daemon = True
+        self._keen_thread.start()
 
     def record_event(self, collection, event_dict):
         e = self.build_default_keen_event()
         e.update(event_dict)
         self._keen_queue.put((collection, e))
-        self._transmit_event()
 
     def _transmit_event(self):
-        # block indefinitely until we get an item (should be 1)
-        c, e = self._keen_queue.get(True, None)
-        try:
-            keen.add_event(c, e)
-        except ConnectionError:
-            # we cannot reach the internet, so drop the event
-            pass
+        # our thread method
+        while 1:
+            # block indefinitely until we get an item
+            c, e = self._keen_queue.get(True, None)
+            try:
+                keen.add_event(c, e)
+            except ConnectionError:
+                # we cannot reach the internet, so drop the event
+                pass
 
     def build_default_keen_event(self):
         return {

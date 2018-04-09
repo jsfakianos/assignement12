@@ -218,6 +218,7 @@ class LampiApp(App):
                "{}: {}\n"
                "DeviceID: {}\n"
                "Broker Bridged: {}\n"
+               "threaded"
                ).format(
                         "",  # version goes here
                         interface,
