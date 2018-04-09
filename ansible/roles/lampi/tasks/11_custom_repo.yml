@@ -1,0 +1,15 @@
+- name: install apt-key
+  tags: custom_repo
+  become: True
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: "{{ hostvars.ec2.apt_repo_subkey_id }}"
+
+- name: install our repository
+  tags: custom_repo
+  become: True
+  apt_repository:
+    repo: "deb http://{{ hostvars.ec2.ansible_ec2_public_hostname }}:8090/ubuntu/ eecs397 main"
+    state: present
+    filename: lampi
+    update_cache: yes

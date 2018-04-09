@@ -39,4 +39,6 @@ Any/all of these compatibility notes should be considered temporary - a future v
 
 # [Chapter 11: Remote Update](Courseware/11.md)
 
+# [Chapter 12: Load Testing](Courseware/12.md)
+
 &copy; 2015-18 LeanDog, Inc. and Nick Barendt

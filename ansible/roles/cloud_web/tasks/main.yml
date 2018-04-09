@@ -4,3 +4,4 @@
 - import_tasks: 10.yml # include chapter 10 (keen) before django
 - import_tasks: 06.yml
 - import_tasks: 07.yml
+- import_tasks: 11.yml

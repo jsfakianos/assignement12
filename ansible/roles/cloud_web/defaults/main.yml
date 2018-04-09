@@ -13,3 +13,9 @@ django_admin_username: admin
 django_admin_email: blah@blah.com
 django_admin_password: iot12345
 django_settings: lampisite.settings
+
+# variables for chapter 11
+apt_repo_full_name: EECS397 Connected Devices
+apt_repo_name: EECS397 Connected Devices Repository
+apt_repo_short_name: eecs397
+apt_repo_subkey_id: FILL_IN
